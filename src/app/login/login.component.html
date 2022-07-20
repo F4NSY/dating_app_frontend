@@ -1,0 +1,105 @@
+<div
+  class="container-fluid vh-100 d-flex align-items-center justify-content-center"
+>
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-xl-6 d-none d-xl-flex align-items-center justify-content-center"
+      >
+        <!-- <img src="../../assets/images/you_source.jpg" class="img-fluid" alt=""> -->
+      </div>
+      <div class="col-xl-6 d-flex align-items-center justify-content-center">
+        <form
+          class="form shadow-lg rounded p-5 w-100"
+          novalidate="novalidate"
+          #loginForm="ngForm"
+          (ngSubmit)="login()"
+        >
+          <div class="form-header text-center mb-3">Login</div>
+          <div class="form-floating has-validation mb-3">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="form-control"
+              placeholder="Email"
+              [class.is-valid]="email.valid"
+              [class.is-invalid]="email.invalid && email.touched"
+              #email="ngModel"
+              [(ngModel)]="request.userName"
+              required
+              [pattern]="defaultEmailPattern"
+            />
+            <label for="email" class="form-label">Email</label>
+            <div
+              *ngIf="email.errors && (email.invalid || email.touched)"
+              id="emailFeedback"
+              class="invalid-feedback"
+            >
+              <span *ngIf="email.errors['required']">
+                <i class="bi bi-exclamation-circle"></i> Email Field is
+                required.
+              </span>
+              <span *ngIf="email.errors['pattern']">
+                <i class="bi bi-exclamation-circle"></i> Email Field is invalid.
+              </span>
+            </div>
+          </div>
+          <div class="form-floating has-validation mb-3">
+            <input
+              type="{{ passwordType }}"
+              name="password"
+              id="password"
+              class="form-control"
+              placeholder="Password"
+              [class.is-valid]="password.valid"
+              [class.is-invalid]="password.invalid && password.touched"
+              #password="ngModel"
+              [(ngModel)]="request.password"
+              required
+            />
+            <label for="password" class="form-label">Password</label>
+            <div id="passwordFeedback" class="invalid-feedback">
+              <i class="bi bi-exclamation-circle"></i> Password Field is
+              required.
+            </div>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                name="rememberMe"
+                id="rememberMe"
+                [(ngModel)]="request.isRememberMe"
+              />
+              <label class="form-check-label" for="rememberMe">
+                Remember me
+              </label>
+            </div>
+            <a routerLink="/forgot-password">Forgot Password?</a>
+          </div>
+          <div class="d-grid mb-3">
+            <button
+              type="submit"
+              [disabled]="loginForm.invalid || isFormSubmitting"
+              class="btn btn-primary"
+              [class.btn-secondary]="loginForm.invalid || isFormSubmitting"
+            >
+              <span
+                *ngIf="isFormSubmitting"
+                class="spinner-border spinner-border-sm"
+                role="status"
+                ><span class="visually-hidden">Loading...</span></span
+              ><span *ngIf="!isFormSubmitting">Sign in</span>
+            </button>
+          </div>
+          <div class="text-center">
+            Don't have an account? <a routerLink="/register">Sign up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

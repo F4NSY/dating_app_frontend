@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.form {
+  max-width: 400px;
+}
+.form-header {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.fs-7 {
+  font-size: 14px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.dropdown-toggle::after {
+  display: none;
+}

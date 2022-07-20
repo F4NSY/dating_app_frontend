@@ -1,0 +1,108 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center col-3">
+      <a class="navbar-brand" routerLink="">DatingApp</a>
+      <input
+        type="search"
+        id="searchBox"
+        class="form-control"
+        placeholder="Search DatingApp"
+      />
+    </div>
+    <ul class="navbar-nav m-auto">
+      <li class="nav-item mx-lg-2">
+        <a class="nav-link" routerLink="">Home</a>
+      </li>
+      <li class="nav-item mx-lg-2">
+        <a class="nav-link" routerLink="">Marketplace</a>
+      </li>
+      <li class="nav-item mx-lg-2">
+        <a class="nav-link" routerLink="">Friends</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav d-flex flex-row col-3 justify-content-end">
+      <li ngbDropdown class="nav-item mx-3">
+        <a ngbDropdownToggle class="nav-link cursor-pointer">
+          <fa-icon [icon]="faBell"></fa-icon>
+          <span
+            class="badge rounded-pill badge-notification bg-danger"
+            id="notifCount"
+          ></span>
+        </a>
+        <ul
+          ngbDropdownMenu
+          class="dropdown-menu-end infinite-scroll"
+          id="notification"
+          style="min-width: 250px; min-height: 150px"
+        >
+          <div class="container">
+            <div class="row align-items-center pt-2">
+              <div class="col-6 d-flex justify-content-start">
+                <span class="fs-6 fw-bold dropdown-header p-0"
+                  >Notification</span
+                >
+              </div>
+              <div ngbDropdown class="col-6 d-flex justify-content-end">
+                <a ngbDropdownToggle class="text-dark cursor-pointer"
+                  ><span
+                    class="p-1 rounded-circle d-flex justify-content-center align-items-center"
+                    style="
+                      height: 30px;
+                      width: 30px;
+                      background-color: rgba(33, 37, 37, 0.15);
+                    "
+                    ><fa-icon [icon]="faEllipsisH"></fa-icon></span
+                ></a>
+                <ul ngbDropdownMenu class="dropdown-menu-end">
+                  <li>
+                    <a ngbDropdownItem class="cursor-pointer"
+                      >Mark all as read</a
+                    >
+                  </li>
+                  <li><a ngbDropdownItem routerLink="">See all</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="notificationBody"></div>
+        </ul>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link" routerLink="">
+          <fa-icon [icon]="faComment"></fa-icon>
+          <span
+            class="badge rounded-pill badge-notification bg-danger"
+            id="messageCount"
+          ></span>
+        </a>
+      </li>
+      <li ngbDropdown class="nav-item ms-2">
+        <a
+          ngbDropdownToggle
+          class="nav-link d-flex align-items-center cursor-pointer"
+        >
+          <img
+            src="../../assets/images/default_profile.jpg"
+            class="rounded-circle"
+            height="22"
+            width="22"
+            alt=""
+            style="object-fit: cover"
+          />
+        </a>
+        <ul ngbDropdownMenu class="dropdown-menu-end">
+          <li>
+            <a ngbDropdownItem routerLink=""
+              ><fa-icon [icon]="faUserAlt" class="me-2"></fa-icon>My profile</a
+            >
+          </li>
+          <li>
+            <a ngbDropdownItem class="cursor-pointer" (click)="logout()"
+              ><fa-icon [icon]="faSignOutAlt" class="me-2"></fa-icon>Logout</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
