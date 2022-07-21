@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { faBell, faComment } from '@fortawesome/free-regular-svg-icons';
-import { faEllipsisH, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEllipsisH,
+  faSignOutAlt,
+  faUserAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { AccountService } from '../_shared/services/account.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
   faBell = faBell;
@@ -15,10 +19,9 @@ export class NavbarComponent implements OnInit {
   faUserAlt = faUserAlt;
   faSignOutAlt = faSignOutAlt;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logout() {
     this.accountService.logout();

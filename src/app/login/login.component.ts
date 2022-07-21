@@ -26,14 +26,17 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.form.valid) {
       this.isFormSubmitting = true;
-      this.accountService.login(this.request).subscribe({next: (response) => {
-        this.isFormSubmitting = false;
-        this.accountService.setAuthenticatedUser(response);
-        this.router.navigateByUrl('/app');
-      }, error: (error) => {
-        this.isFormSubmitting = false;
-        console.log(error);
-      }})
+      this.accountService.login(this.request).subscribe({
+        next: (response) => {
+          this.isFormSubmitting = false;
+          this.accountService.setAuthenticatedUser(response);
+          this.router.navigateByUrl('/app');
+        },
+        error: (error) => {
+          this.isFormSubmitting = false;
+          console.log(error);
+        },
+      });
     }
   }
 }

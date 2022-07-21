@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -20,6 +19,10 @@ export class AccountService {
 
   setAuthenticatedUser(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  isAuthenticated() {
+    return !!localStorage.getItem('user');
   }
 
   logout() {
